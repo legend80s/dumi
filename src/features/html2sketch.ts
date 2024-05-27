@@ -20,7 +20,7 @@ export default (api: IApi) => {
         path: 'msgExecutor.ts',
         content: `import { getSketchJSON } from '.';
 
-window.addEventListener('message', (ev) => {
+typeof window !== 'undefined' && window.addEventListener('message', (ev) => {
   if (ev.data.type === 'dumi.html2sketch.exec') {
     const { value: opts, token } = ev.data;
 

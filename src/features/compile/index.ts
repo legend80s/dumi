@@ -93,10 +93,12 @@ export default (api: IApi) => {
       .test(/\.md$/);
 
     mdRule
+      .oneOf('md-null')
       .pre()
       .resourceQuery(/watch=parent/)
-      .use('raw-loader')
-      .loader(require.resolve('../../loaders/pre-raw'));
+      .use('null-loader')
+      .loader(require.resolve('../../loaders/null'))
+      .end();
 
     // generate independent oneOf rules
     ['frontmatter', 'text', 'demo-index'].forEach((type) => {
